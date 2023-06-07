@@ -1,7 +1,7 @@
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class Main {
+public class Calculator {
     public static void main(String[] args) {
         double result = 0;
         boolean Operation = true;
