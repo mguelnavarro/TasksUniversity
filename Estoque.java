@@ -1,12 +1,12 @@
 import javax.swing.JOptionPane;
 
-public class Estoque {
-    int[] codigos = {10, 20, 30, 40, 50};
-    int[] quantidades = new int[50];
-    public void atualizarQuantidade(int codigo, int quantidade) {
+public class Stock {
+    int[] codes = {10, 20, 30, 40, 50};
+    int[] quantities = new int[50];
+    public void updateQuantity(int code, int quantity) {
         int index = -1;
-        for (int i = 0; i < codigos.length; i++) {
-            if (codigos[i] == codigo) {
+        for (int i = 0; i < codes.length; i++) {
+            if (codes[i] == code) {
                 index = i;
                 break;
             }
@@ -14,42 +14,42 @@ public class Estoque {
         if (index == -1) {
             JOptionPane.showMessageDialog(null, "Produto não encontrado");
         } else {
-            quantidades[index] += quantidade;
+            quantities[index] += quantity;
             JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso");
         }
     }
 
     public static void main(String[] args) {
-        Estoque estoque = new Estoque();
+        Stock stock = new Stock();
 
         String codigoStr = JOptionPane.showInputDialog(null, "Digite o código do produto:");
-        int codigo = Integer.parseInt(codigoStr);
+        int code = Integer.parseInt(codigoStr);
 
-        boolean codigoEncontrado = false;
-        for (int i = 0; i < estoque.codigos.length; i++) {
-            if (estoque.codigos[i] == codigo) {
-                codigoEncontrado = true;
+        boolean codeFound = false;
+        for (int i = 0; i < stock.codes.length; i++) {
+            if (stock.codes[i] == code) {
+                codeFound = true;
                 break;
             }
         }
-        if (!codigoEncontrado) {
+        if (!codeFound) {
             JOptionPane.showMessageDialog(null, "Produto não encontrado");
             System.exit(0);
         }
 
-        String quantidadeStr = JOptionPane.showInputDialog(null, "Digite a quantidade a ser adicionada:");
-        int quantityStr = Integer.parseInt(quantidadeStr);
+        String quantityAdd = JOptionPane.showInputDialog(null, "Digite a quantidade a ser adicionada:");
+        int quantityStr = Integer.parseInt(quantityAdd);
         if (quantityStr > 50) {
             JOptionPane.showMessageDialog(null, "Erro! Quantidade não aprovada! ");
             System.exit(0);
         }
-        int quantidade = Integer.parseInt(quantidadeStr);
+        int quantity = Integer.parseInt(quantityAdd);
 
-        estoque.atualizarQuantidade(codigo, quantidade);
+        stock.updateQuantity(code, quantity);
 
         int index = -1;
-        for (int i = 0; i < estoque.codigos.length; i++) {
-            if (estoque.codigos[i] == codigo) {
+        for (int i = 0; i < stock.codes.length; i++) {
+            if (stock.codes[i] == code) {
                 index = i;
                 break;
             }
@@ -57,7 +57,7 @@ public class Estoque {
         if (index == -1) {
             JOptionPane.showMessageDialog(null, "Produto não encontrado");
         } else {
-            JOptionPane.showMessageDialog(null, "Quantidade total do produto de código " + codigo + ": " + estoque.quantidades[index]);
+            JOptionPane.showMessageDialog(null, "Quantidade total do produto de código " + code + ": " + stock.quantities[index]);
         }
     }
 }
